@@ -1,5 +1,6 @@
 import pygame
-import time
+import random
+
 
 #default: (255, 255, 255)
 background_colour = (232, 224, 209)
@@ -28,6 +29,8 @@ def circ(surface, color, pos, dia):
 def graph(x, b, xvalue):
 
     equation = ""
+
+    xvalue = xvalue * -1
 
     if x != 0:
 
@@ -70,7 +73,7 @@ def windowtext(x, h, b):
 
         equation = equation + " + " + str(b)
 
-    equation = equation + " - PotatoCouch's graph visualiser"
+    equation = equation + " | PotatoCouch's graph visualiser"
     return equation
 
 
@@ -78,11 +81,20 @@ def displaygraph(x, h, b, inbetween):
 
     hwidth = width / 2
     hheight = height / 2
-
-    pygame.display.set_caption(windowtext(str(x), h, b))
-
     inbetween = inbetween * -1
     count = width * -1
+    ng_h = height * -1
+
+    if x == "random":
+        x = random.uniform(0.00000001, 100)
+
+    if h.lower() == "random":
+        h = random.uniform(count, width)
+
+    if b.lower() == "random":
+        b = random.uniform(ng_h, height)
+
+    pygame.display.set_caption(windowtext(x, h, b))
 
     while count <= width + 1:
 
@@ -135,7 +147,7 @@ while running:
         drawaxes = width * -1
         pygame.display.flip()
         drawlines(axis_color)
-        displaygraph(-1/500, 20, 60, 1)
+        displaygraph(1/500, 50, "random", 1)
 
         do_once = False
 
