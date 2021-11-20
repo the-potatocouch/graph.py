@@ -6,7 +6,7 @@ import random
 background_colour = (232, 224, 209)
 
 #default: (52, 137, 227)
-line_color = (20, 30, 40)
+line_color = (100, 100, 100)
 
 #default: (0, 0, 0)
 axis_color = (0, 0, 0)
@@ -71,7 +71,7 @@ def windowtext(x, h, b):
 
     if b != 0:
 
-        equation = equation + " + " + str(b)
+        equation = equation + " + " + str(abs(b))
 
     equation = equation + " | PotatoCouch's graph visualiser"
     return equation
@@ -88,11 +88,11 @@ def displaygraph(x, h, b, inbetween):
     if x == "random":
         x = random.uniform(0.00000001, 100)
 
-    if h.lower() == "random":
-        h = random.uniform(count, width)
+    if h == "random":
+        h = random.uniform(count, hwidth)
 
-    if b.lower() == "random":
-        b = random.uniform(ng_h, height)
+    if b == "random":
+        b = random.uniform(ng_h, hheight)
 
     pygame.display.set_caption(windowtext(x, h, b))
 
@@ -147,7 +147,7 @@ while running:
         drawaxes = width * -1
         pygame.display.flip()
         drawlines(axis_color)
-        displaygraph(1/500, 50, "random", 1)
+        displaygraph("random", "random", "random", 1)
 
         do_once = False
 
