@@ -147,7 +147,7 @@ while running:
         drawaxes = width * -1
         pygame.display.flip()
         drawlines(axis_color)
-        displaygraph("random", "random", "random", 1)
+        displaygraph(20/10000, 10, 10, 1)
 
         do_once = False
 
